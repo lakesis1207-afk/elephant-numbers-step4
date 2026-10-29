@@ -1,0 +1,93 @@
+/* 4단계 새 그림: 수직선, 100 숫자판, 짝 지은 알, 동전, 시계 */
+.s4-line { display: flex; justify-content: center; align-items: flex-end; gap: 0.6cqh; }
+.s4-tick { display: flex; flex-direction: column; align-items: center; width: 6.4cqh; }
+.s4-tick b { height: 5cqh; font-size: 4.2cqh; color: #5b4636; }
+.s4-tick i { width: 100%; height: 3cqh; border-left: 0.4cqh solid #8a6d4b; border-bottom: 0.6cqh solid #8a6d4b; }
+.s4-tick.on i { background: #ffd54f; }
+.s4-board { display: grid; grid-template-columns: repeat(10, 1fr); gap: 0.4cqh; width: 88cqh; max-width: 100%; }
+.s4-board span { background: #fff8e1; border-radius: 0.8cqh; text-align: center; font-size: 3.4cqh; line-height: 5cqh; color: #5b4636; }
+.s4-board .on { background: #ffd54f; font-weight: bold; }
+.s4-board .q { background: #ff8a65; color: #fff; font-weight: bold; }
+.s4-pairs { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.4cqh 2cqh; max-width: 100cqh; }
+.s4-pair { display: flex; gap: 0.4cqh; padding: 0.6cqh 1cqh; border-radius: 2cqh; background: rgba(255, 255, 255, 0.5); }
+.s4-pair img, .s4-pair i { width: 8cqh; height: 10cqh; object-fit: contain; }
+.s4-coins { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.2cqh; max-width: 100cqh; }
+.s4-coin { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; border-radius: 50%; border: 0.7cqh solid #a67c00; font-family: inherit; color: #5b4636; box-shadow: 0 0.4cqh 0 #a67c00; }
+.s4-coin b { font-size: 4.4cqh; line-height: 1; }
+.s4-coin small { font-size: 2.2cqh; }
+.s4-coin.c10 { width: 11cqh; height: 11cqh; background: #e0a458; }
+.s4-coin.c50 { width: 13cqh; height: 13cqh; background: #e8e8e8; border-color: #8e8e8e; box-shadow: 0 0.4cqh 0 #8e8e8e; }
+.s4-coin.c100 { width: 15cqh; height: 15cqh; background: #ffe082; }
+.s4-tray { display: flex; gap: 2cqh; }
+button.s4-coin { cursor: pointer; }
+.s4-paid { font-size: 4.4cqh; color: #5b4636; min-height: 6cqh; display: flex; align-items: center; gap: 1cqh; flex-wrap: wrap; justify-content: center; }
+.s4-price { display: flex; align-items: center; gap: 2cqh; }
+.s4-price img { width: 14cqh; height: 14cqh; object-fit: contain; }
+.s4-tag { background: #fff; border: 0.6cqh dashed #e07a5f; border-radius: 1.4cqh; padding: 0.6cqh 2cqh; font-size: 6cqh; color: #e07a5f; }
+.s4-clock { width: 34cqh; height: 34cqh; touch-action: none; }
+.s4-clock .cf { fill: #fff; stroke: #8a6d4b; stroke-width: 5; }
+.s4-clock .cn { font-size: 17px; fill: #5b4636; }
+.s4-clock .hh { stroke: #e07a5f; stroke-width: 8; stroke-linecap: round; }
+.s4-clock .mh { stroke: #3d405b; stroke-width: 5; stroke-linecap: round; }
+.s4-clock .cc { fill: #3d405b; }
+.s4-clock.live { cursor: grab; }
+.s4-act { font-size: 4.6cqh; color: #5b4636; }
+.s4-group .s3-one.sel { outline: 0.6cqh solid #ff8a65; border-radius: 1cqh; }
+
+/* 10 먼저 채우기: 도토리 칸과 낱개 도토리 */
+.s4-fill { display: grid; grid-template-columns: repeat(5, 11cqh); gap: 0.8cqh; padding: 1cqh; background: rgb(255 255 255 / 75%); border: 0.5cqh solid #8a6d4b; border-radius: 2cqh; }
+.s4-fill.full { background: #fff3b0; }
+.s4-cell { display: flex; align-items: center; justify-content: center; width: 11cqh; height: 11cqh; border: 0.4cqh dashed #b59b7a; border-radius: 1.4cqh; }
+.s4-cell img, .s4-loose img { width: 9cqh; height: 9cqh; object-fit: contain; }
+.s4-looserow { display: flex; flex-wrap: wrap; justify-content: center; gap: 1cqh; max-width: 40cqh; }
+.s4-loose { padding: 0.5cqh; border-radius: 50%; cursor: pointer; background: transparent; border: 0; }
+
+/* 수직선 거꾸로 뛰기: 펭귄이 칸 위에 선다 */
+.s4-line { cursor: pointer; }
+.s4-slot { height: 11cqh; display: flex; align-items: flex-end; justify-content: center; }
+.s4-hopper { height: 11cqh; width: auto; }
+.s4-tick.ten i { background: #ffcc80; }
+
+/* 빈칸 채우기: 주머니 속 조개 */
+.s4-sack { position: relative; width: 16cqh; height: 12cqh; }
+.s4-sack img { width: 100%; height: 100%; object-fit: contain; }
+.s4-sack b { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 8cqh; color: #e07a5f; }
+.s4-small .s3-pics img { width: 8cqh; height: 8cqh; }
+.s3-pics img.dim { opacity: 0.3; }
+
+/* 짝수·홀수: 알을 크게, 보기는 아래쪽에 크게 */
+.s3q.low { justify-content: space-between; padding: 3cqh 0 2cqh; }
+.s4-pairs { gap: 1.6cqh 2.4cqh; }
+.s4-pair img, .s4-pair i { width: 12cqh; height: 15cqh; }
+.s4-pairs.small .s4-pair img, .s4-pairs.small .s4-pair i { width: 9cqh; height: 11cqh; }
+.s3q.low .opts.wide .opt { padding: 2cqh 5cqh 2.5cqh; }
+.s3q.low .opts.wide .opt b { font-size: 9cqh; }
+
+/* 물건 사기: 크게, 동전은 아래쪽 */
+.s4-buy { display: flex; flex-direction: column; justify-content: space-between; align-items: center; height: 92cqh; padding-top: 3cqh; }
+.s4-bottom { display: flex; flex-direction: column; align-items: center; gap: 1.5cqh; }
+.s4-price img { width: 24cqh; height: 24cqh; }
+.s4-tag { font-size: 9cqh; padding: 1cqh 3cqh; }
+.s4-paid { font-size: 6cqh; min-height: 8cqh; }
+.s4-coin.c10 { width: 16cqh; height: 16cqh; }
+.s4-coin.c50 { width: 18cqh; height: 18cqh; }
+.s4-coin.c100 { width: 20cqh; height: 20cqh; }
+.s4-coin b { font-size: 6.4cqh; }
+.s4-coin small { font-size: 3cqh; }
+
+/* 저울 맞추기 */
+.s4-scale { position: relative; width: 76cqh; height: 48cqh; --tilt: 0deg; }
+.s4-stand { position: absolute; left: 50%; top: 3cqh; width: 3cqh; height: 44cqh; margin-left: -1.5cqh; background: #8a6d4b; border-radius: 1cqh; }
+.s4-stand::after { content: ''; position: absolute; left: -6cqh; right: -6cqh; bottom: 0; height: 2.4cqh; background: #8a6d4b; border-radius: 1cqh; }
+.s4-beam { position: absolute; top: 2cqh; left: 0; right: 0; height: 2cqh; display: flex; justify-content: space-between; background: #8a6d4b; border-radius: 1cqh; transform: rotate(var(--tilt)); transition: transform 0.9s cubic-bezier(0.3, 1.4, 0.5, 1); }
+.s4-scale.level .s4-beam { background: #7cb342; }
+.s4-pan { position: relative; top: 2cqh; display: flex; flex-direction: column; align-items: center; transform-origin: 50% 0; transform: rotate(calc(var(--tilt) * -1)); transition: transform 0.9s cubic-bezier(0.3, 1.4, 0.5, 1); }
+.s4-panbox { box-sizing: border-box; width: 30cqh; min-height: 15cqh; display: flex; flex-wrap: wrap; justify-content: center; align-content: flex-end; padding: 1cqh; background: rgb(255 255 255 / 60%); border: 0.6cqh solid #8a6d4b; border-top: 0; border-radius: 0 0 12cqh 12cqh; }
+.s4-panbox img { width: 6cqh; height: 6cqh; object-fit: contain; }
+.s4-panbox img.new { filter: drop-shadow(0 0 0.8cqh #ffb300); }
+.s4-q { font-size: 7cqh; color: #e07a5f; }
+.s4-num { font-size: 7cqh; color: #5b4636; align-self: center; }
+.s4-pancap { min-height: 6cqh; font-size: 5cqh; color: #5b4636; }
+
+/* 이야기 문제 */
+.s4-story { max-width: 88%; padding: 3cqh 4cqh; font-size: 5.2cqh; line-height: 1.5; color: #5b4636; text-align: center; word-break: keep-all; background: rgb(255 255 255 / 78%); border-radius: 3cqh; }
